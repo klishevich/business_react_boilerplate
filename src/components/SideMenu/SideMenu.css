@@ -1,0 +1,12 @@
+.SideMenu {
+  top: 0;
+  left: -300px;
+  bottom: 0;
+  z-index: 1;
+  overflow-y: auto;
+  width: 300px;
+  color: #364149;
+  background: #fafafa;
+  border-right: 1px solid rgba(0,0,0,.07);
+  min-height: 600px;
+}

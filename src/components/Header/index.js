@@ -6,8 +6,14 @@ class Header extends Component {
   render() {
     return (
       <div className="Header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h2>Header of Business Bootstrap Application</h2>
+      	<div className="row">
+      	  <div className="col-md-3">
+      	    <img src={logo} className="App-logo" alt="logo" />
+      	  </div>
+      	  <div className="col-md-9">
+      	    <h2>Business Application Boilerplate (React, Redux)</h2>
+      	  </div>
+      	</div>
       </div>
     );
   }

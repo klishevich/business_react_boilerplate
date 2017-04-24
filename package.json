@@ -1,12 +1,16 @@
 {
-  "name": "my-react-create-app",
+  "name": "business_react_boilerplate",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "prop-types": "^15.5.8",
     "react": "^15.5.4",
+    "react-bootstrap": "^0.30.10",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.4",
-    "redux": "^3.6.0"
+    "redux": "^3.6.0",
+    "redux-logger": "^3.0.1",
+    "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
     "autoprefixer": "6.7.2",
