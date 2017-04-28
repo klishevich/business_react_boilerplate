@@ -14,7 +14,7 @@ class ListsContainer extends Component {
   }
 
   render() {
-  	console.log('ListsContainer props', this.props);
+  	// console.log('ListsContainer props', this.props);
     // console.log('ListsContainer', this.props);
   	const { lists, isFetching, lastUpdated, dispatch } = this.props;
     return (
@@ -41,7 +41,11 @@ class ListsContainer extends Component {
         }
         {lists.length > 0 &&
           <div style={{ opacity: isFetching ? 0.5 : 1 }}>
-            <ListsIndex lists={lists} handleListDelete={(list_id)=>(dispatch(deleteList(list_id)))}/>
+            <ListsIndex
+              lists={lists}
+              isFetching={isFetching}
+              handleListDelete={(index, list_id)=>(dispatch(deleteList(index,list_id)))}
+            />
           </div>
         }
       </div>

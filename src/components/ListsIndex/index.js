@@ -5,6 +5,7 @@ import { convertDate } from '../../utils/convertDate';
 
 export default class ListsIndex extends Component {
   render() {
+    const { handleListDelete, isFetching } = this.props;
     return (
       <div className="ListsIndex">
         <table className="table table-striped">
@@ -23,7 +24,9 @@ export default class ListsIndex extends Component {
                 <td>
                   <div>
                     <a className="ListsIndex_editButton btn btn-primary" href="#">Edit</a>
-                    <a href="#" className="btn btn-danger">Delete</a>
+                    {!isFetching &&
+                      <button className="btn btn-danger" onClick={()=>(handleListDelete(i, list.id))}>Delete</button>
+                    }
                   </div>
                 </td>
                 <td>{list.id}</td>
@@ -42,5 +45,7 @@ export default class ListsIndex extends Component {
 }
 
 ListsIndex.propTypes = {
-  lists: PropTypes.array.isRequired
+  lists: PropTypes.array.isRequired,
+  handleListDelete: PropTypes.func.isRequired,
+  isFetching: PropTypes.bool.isRequired,
 }

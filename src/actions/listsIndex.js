@@ -1,7 +1,4 @@
-import fetch from 'isomorphic-fetch';
-import { url } from '../constants';
-
-import { getLists } from '../api/lists'
+import { APIgetLists, APIdeleteList } from '../api/lists'
 
 export const REQUEST_LISTS_INDEX = 'REQUEST_LISTS_INDEX';
 export const RECEIVE_LISTS_INDEX = 'RECEIVE_LISTS_INDEX';
@@ -11,7 +8,7 @@ export const RECEIVE_DELETE_LISTS_INDEX = 'RECEIVE_DELETE_LISTS_INDEX';
 
 // не понятно как это работает?
 export function fetchListsIfNeeded() {
-  console.log('actions fetchListsIfNeeded');
+  // console.log('actions fetchListsIfNeeded');
   return (dispatch, getState) => {
     dispatch(invalidateLists());
     if (shouldFetchLists(getState())) {
@@ -22,45 +19,34 @@ export function fetchListsIfNeeded() {
 }
 
 function invalidateLists() {
-  console.log('actions invalidateLists');
+  // console.log('actions invalidateLists');
   return {
-    type: INVALIDATE_LISTS_INDEX
+    type: INVALIDATE_LISTS_INDEX,
+    payload: { didInvalidate: true }
   }
 }
 
 function requestLists() {
-  console.log('actions requestLists');
+  // console.log('actions requestLists');
   return {
-    type: REQUEST_LISTS_INDEX
+    type: REQUEST_LISTS_INDEX,
+    payload: { isFetching: true, didInvalidate: false }
   }
 }
 
 function receiveLists(lists) {
-  console.log('actions receiveLists', lists);
+  // console.log('actions receiveLists', lists);
   return {
     type: RECEIVE_LISTS_INDEX,
-    payload: { lists, lastUpdated: Date.now() }
+    payload: { lists, lastUpdated: Date.now(), isFetching: false, didInvalidate: false }
   }
 }
 
-// function fetchLists() {
-//   return (dispatch) => {
-//     dispatch(requestLists())
-//     return  fetch(url + '/lists', {
-//       headers: {
-//         'Accept': 'application/json'
-//       }
-//     })
-//     .then(response => response.json())
-//     .then(json => dispatch(receiveLists(json)))
-//   }
-// }
-
 function fetchLists() {
-  console.log('actions fetchLists');
+  // console.log('actions fetchLists');
   return (dispatch) => {
     dispatch(requestLists())
-    return getLists()
+    return APIgetLists()
     .then(response => response.json())
     .then(json => dispatch(receiveLists(json)))
     // catch
@@ -68,55 +54,46 @@ function fetchLists() {
 }
 
 function shouldFetchLists(state) {
-  console.log('actions shouldFetchLists', state);
+  // console.log('actions shouldFetchLists', state);
   const lists = state.listsIndex.lists;
-  console.log('lists', lists);
+  // console.log('lists', lists);
   if (!lists) {
-    console.log('!lists');
+    // console.log('!lists');
     return true;
   } else if (lists.isFetching) {
-    console.log('lists.isFetching');
+    // console.log('lists.isFetching');
     return false;
   } else {
-    console.log('else', state.listsIndex.didInvalidate);
+    // console.log('else', state.listsIndex.didInvalidate);
     return state.listsIndex.didInvalidate;
   }
 }
 
-// НАДО ДОДЕЛАТЬ
+// DELETING
 
-export function deleteList(list_id) {
-  console.log('actions deleteList', list_id);
+export function deleteList(index, list_id) {
+  // console.log('actions deleteList');
   return (dispatch, getState) => {
     dispatch(invalidateLists());
-    return dispatch(deleteList2(list_id));
+    dispatch(requestDeleteList(index));
+    return APIdeleteList(list_id)
+    .then(() => dispatch(receiveDeleteList()))
   }
 }
 
-function deleteList2(list_id) {
-  console.log('actions deleteList2', list_id);
-  return (dispatch) => {
-    dispatch(requestDeleteList());
-    return fetch(url + '/lists' + list_id, {
-        method: 'DELETE'
-    })
-    .then(() => dispatch(removeList(list_id)))
-  }
-}
-
-function requestDeleteList(list_id) {
-  console.log('actions requestDeleteList', list_id);
+function requestDeleteList(deleting_list_index) {
+  // console.log('actions requestDeleteList', deleting_list_index);
   return {
     type: REQUEST_DELETE_LISTS_INDEX,
-    list_id
+    payload: { deleting_list_index }
   }
 }
 
-function removeList(list_id) {
-  console.log('actions removeList', list_id);
+function receiveDeleteList() {
+  // console.log('actions receiveDeleteList');
   return {
     type: RECEIVE_DELETE_LISTS_INDEX,
-    list_id
+    payload: { deleting_list_index: null }
   }
 }
 
