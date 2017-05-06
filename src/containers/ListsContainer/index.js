@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import './ListsContainer.css';
-import H2 from '../../components/H2';
 import { fetchListsIfNeeded, deleteList } from '../../actions/listsIndex';
 import { connect } from 'react-redux';
 import ListsIndex from '../../components/ListsIndex';
-import Button from 'react-bootstrap/lib/Button';
 
 class ListsContainer extends Component {
   componentDidMount() {
@@ -18,36 +15,14 @@ class ListsContainer extends Component {
     // console.log('ListsContainer', this.props);
   	const { lists, isFetching, lastUpdated, dispatch } = this.props;
     return (
-      <div className="ListsContainer">
-      	<H2 title="Lists Container" />
-        <p>
-          {lastUpdated &&
-            <span>
-              Last updated at {new Date(lastUpdated).toLocaleTimeString()}.
-              {' '}
-            </span>
-          }
-          {!isFetching &&
-          	<Button bsStyle="primary" bsSize="large" onClick={()=>(dispatch(fetchListsIfNeeded()))}>
-          		Refresh
-          	</Button>
-          }
-        </p>
-        {isFetching && lists.length === 0 &&
-          <h3>Loading...</h3>
-        }
-        {!isFetching && lists.length === 0 &&
-          <h3>No any data ... hit Refresh?</h3>
-        }
-        {lists.length > 0 &&
-          <div style={{ opacity: isFetching ? 0.5 : 1 }}>
-            <ListsIndex
-              lists={lists}
-              isFetching={isFetching}
-              handleListDelete={(index, list_id)=>(dispatch(deleteList(index,list_id)))}
-            />
-          </div>
-        }
+      <div className="lists-container">
+        <ListsIndex
+          lists={lists}
+          isFetching={isFetching}
+          lastUpdated={lastUpdated}
+          handleListDelete={(index, list_id)=>dispatch(deleteList(index,list_id))}
+          handleFetchListsIfNeeded={()=>dispatch(fetchListsIfNeeded())}
+        />
       </div>
     );
   }

@@ -5,10 +5,10 @@ import './Header.css';
 class Header extends Component {
   render() {
     return (
-      <div className="Header">
+      <div className="header">
       	<div className="row">
       	  <div className="col-md-3">
-      	    <img src={logo} className="App-logo" alt="logo" />
+      	    <img src={logo} className="header__app-logo" alt="logo" />
       	  </div>
       	  <div className="col-md-9">
       	    <h2>Business Application Boilerplate (React, Redux)</h2>

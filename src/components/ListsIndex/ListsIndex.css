@@ -1,10 +1,30 @@
-.ListsIndex {
+.lists-index {
+  position: absolute;
+  top: 120px;
+  right: 0;
+  left: 300px;
+  bottom: 0;
+  overflow-y: auto;
+  color: #000;
+  background: #fff;
+  min-height: 600px;
+}
+
+.lists-index-header {
+  min-height: 90px;
+}
+
+.lists-index-table {
 	text-align: left;
 }
 
-.ListsIndex_thButtons {
+.lists-index-table__th-buttons {
 	width: 160px;
 }
-.ListsIndex_editButton {
+.lists-index-table__edit-button {
 	margin-right: 10px;
+}
+
+.lists-index-table__edit-button_bold {
+	font-weight: bold;
 }
