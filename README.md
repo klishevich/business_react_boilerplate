@@ -14,7 +14,13 @@ export const url = 'http://react_redux_api_rails5.j123.ru'
 
 ### Tasks to do
 
-1. Add React Router
+1. ~~create-react-app~~
+1. ~~Redux~~
+1. ~~ESLint~~
+1. ~~Get list of items page~~
+1. ~~Delete item button~~
+1. ~~Add React Router~~
+2. ? React Router Redux
 2. Create and Edit page
 3. Hot Reload
 3. Tests
@@ -29,6 +35,8 @@ export const url = 'http://react_redux_api_rails5.j123.ru'
 7. Reselectors
 8. CSS Modules
 9. Components Library
+9. Authentication (JWT)
+9. Authorization
 
 
 ### Task to train youself

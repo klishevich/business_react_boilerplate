@@ -10,7 +10,7 @@ function ListsIndex(props) {
   return (
     <div className="lists-index">
       <div className="lists-index-header">
-        <H2 title="Lists Component" />
+        <H2 title="Lists Page" />
         <div>
           {lastUpdated > 0 &&
             <span>

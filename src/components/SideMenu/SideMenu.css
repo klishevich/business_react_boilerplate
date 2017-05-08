@@ -9,4 +9,11 @@
   background: #fafafa;
   border-right: 1px solid rgba(0,0,0,.07);
   min-height: 600px;
+  text-align: center;
+}
+
+.side-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
