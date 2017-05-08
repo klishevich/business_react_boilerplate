@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { fetchListsIfNeeded, deleteList } from '../../actions/listsIndex';
 import { connect } from 'react-redux';
+import { fetchListsIfNeeded, deleteList } from '../../actions/listsIndex';
 import ListsIndex from '../../components/ListsIndex';
 
 class ListsContainer extends Component {
@@ -11,17 +11,17 @@ class ListsContainer extends Component {
   }
 
   render() {
-  	// console.log('ListsContainer props', this.props);
+    // console.log('ListsContainer props', this.props);
     // console.log('ListsContainer', this.props);
-  	const { lists, isFetching, lastUpdated, dispatch } = this.props;
+    const { lists, isFetching, lastUpdated, dispatch } = this.props;
     return (
       <div className="lists-container">
         <ListsIndex
           lists={lists}
           isFetching={isFetching}
           lastUpdated={lastUpdated}
-          handleListDelete={(index, list_id)=>dispatch(deleteList(index,list_id))}
-          handleFetchListsIfNeeded={()=>dispatch(fetchListsIfNeeded())}
+          handleListDelete={(index, listId) => dispatch(deleteList(index, listId))}
+          handleFetchListsIfNeeded={() => dispatch(fetchListsIfNeeded())}
         />
       </div>
     );
@@ -33,12 +33,13 @@ ListsContainer.propTypes = {
   isFetching: PropTypes.bool.isRequired,
   lastUpdated: PropTypes.number,
   dispatch: PropTypes.func.isRequired,
-}
+};
 
 ListsContainer.defaultProps = {
   lists: [],
   isFetching: false,
-}
+  lastUpdated: 0,
+};
 
 function mapStateToProps(state) {
   // console.log('ListsContainer mapStateToProps', state);
@@ -56,7 +57,7 @@ function mapStateToProps(state) {
     lists,
     isFetching,
     lastUpdated,
-  }
+  };
 }
 
-export default connect(mapStateToProps)(ListsContainer)
+export default connect(mapStateToProps)(ListsContainer);

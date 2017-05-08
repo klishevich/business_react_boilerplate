@@ -16,7 +16,6 @@ export const url = 'http://react_redux_api_rails5.j123.ru'
 
 1. Add React Router
 2. Create and Edit page
-3. ESLint
 3. Hot Reload
 3. Tests
 4. Validations for saving form
