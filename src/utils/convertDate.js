@@ -25,3 +25,14 @@ export function convertDate2(stringDate) {
   }
   return stringDate;
 }
+
+export function cutDate(stringDate) {
+  if (typeof stringDate === 'string' || stringDate instanceof String) {
+    if (stringDate.length >= 10) {
+      const res = stringDate.substring(0, 10);
+      // console.log(res);
+      return res;
+    }
+  }
+  return stringDate;
+}

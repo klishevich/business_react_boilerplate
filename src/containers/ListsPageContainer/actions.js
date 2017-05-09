@@ -6,7 +6,7 @@ export const INVALIDATE_LISTS = 'INVALIDATE_LISTS';
 export const REQUEST_DELETE_LIST = 'REQUEST_DELETE_LIST';
 export const RECEIVE_DELETE_LIST = 'RECEIVE_DELETE_LIST';
 
-function invalidateLists() {
+export function invalidateLists() {
   // console.log('actions invalidateLists');
   return {
     type: INVALIDATE_LISTS,
@@ -45,7 +45,7 @@ function receiveLists(lists) {
   };
 }
 
-function fetchLists() {
+export function fetchLists() {
   // console.log('actions fetchLists');
   return (dispatch) => {
     dispatch(requestLists());
@@ -59,7 +59,6 @@ function fetchLists() {
 export function fetchListsIfNeeded() {
   // console.log('actions fetchListsIfNeeded');
   return (dispatch, getState) => {
-    dispatch(invalidateLists());
     if (shouldFetchLists(getState())) {
       // console.log('start dispatch(fetchLists())');
       return dispatch(fetchLists());

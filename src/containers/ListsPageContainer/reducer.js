@@ -6,12 +6,14 @@ import {
   RECEIVE_DELETE_LIST,
 } from './actions';
 
-function listsIndex(state = { }, action) {
+function listsPageReducer(state = { }, action) {
   switch (action.type) {
     case INVALIDATE_LISTS:
     case REQUEST_LISTS:
     case RECEIVE_LISTS:
     case REQUEST_DELETE_LIST:
+      // ... - spread operator, returns new object created from state
+      // with action.payload values assigned to it
       return { ...state, ...action.payload };
     case RECEIVE_DELETE_LIST:
       // console.log('RECEIVE_DELETE_LIST state', state);
@@ -24,4 +26,4 @@ function listsIndex(state = { }, action) {
   }
 }
 
-export default listsIndex;
+export default listsPageReducer;

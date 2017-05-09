@@ -19,7 +19,7 @@ export function APIdeleteList(listId) {
 }
 
 export function APIgetList(listId) {
-  return fetch(`${url}/list/${listId}`, {
+  return fetch(`${url}/lists/${listId}`, {
     headers: {
       Accept: 'application/json',
     },

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from 'react-bootstrap/lib/Button';
 import { Link } from 'react-router-dom';
 import './style.css';
 import convertDate from '../../utils/convertDate';
@@ -21,14 +20,13 @@ function ListsPage(props) {
           }
         </div>
         <div className="lists-page__last-updated-button">
-          <Button
-            bsStyle="primary"
+          <button
+            className="btn btn-primary btn-lg"
             disabled={isFetching}
-            bsSize="large"
             onClick={() => handleFetchListsIfNeeded()}
           >
-              Refresh
-          </Button>
+            Refrash
+          </button>
         </div>
         {isFetching && lists.length === 0 &&
           <h3>Loading...</h3>

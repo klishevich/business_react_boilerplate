@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchListsIfNeeded, deleteList } from './actions';
+import { fetchLists, fetchListsIfNeeded, deleteList } from './actions';
 import ListsPage from '../../components/ListsPage';
 
 class ListsPageContainer extends Component {
   componentDidMount() {
-    // const { dispatch } = this.props;
-    // dispatch(fetchListsIfNeeded());
+    const { dispatch } = this.props;
+    dispatch(fetchListsIfNeeded());
   }
 
   render() {
@@ -21,7 +21,7 @@ class ListsPageContainer extends Component {
           isFetching={isFetching}
           lastUpdated={lastUpdated}
           handleListDelete={(index, listId) => dispatch(deleteList(index, listId))}
-          handleFetchListsIfNeeded={() => dispatch(fetchListsIfNeeded())}
+          handleFetchListsIfNeeded={() => dispatch(fetchLists())}
         />
       </div>
     );
