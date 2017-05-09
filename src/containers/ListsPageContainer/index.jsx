@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchListsIfNeeded, deleteList } from '../../actions/listsIndex';
+import { fetchListsIfNeeded, deleteList } from './actions';
 import ListsPage from '../../components/ListsPage';
 
 class ListsPageContainer extends Component {
@@ -43,14 +43,13 @@ ListsPageContainer.defaultProps = {
 
 function mapStateToProps(state) {
   // console.log('ListsPageContainer mapStateToProps', state);
-  // TODO listsIndex rename
-  const { listsIndex } = state;
+  const { listsPage } = state;
   // console.log('ListsPageContainer mapStateToProps listsPage', listsPage);
   const {
     lists,
     isFetching,
     lastUpdated,
-  } = listsIndex;
+  } = listsPage;
 
   // console.log('ListsPageContainer mapStateToProps lists', lists);
 

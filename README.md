@@ -26,9 +26,7 @@ export const url = 'http://react_redux_api_rails5.j123.ru'
 3. Tests
 4. Validations for saving form
 5. Dictionaries
-5. Server-side rendering
-5. Remove styles from container
-5. ? Put in one folder Actions, API, Containers, Reducers 
+5. Server-side rendering 
 5. Deployment to Production
 6. Nested attributes
 7. Data normalization

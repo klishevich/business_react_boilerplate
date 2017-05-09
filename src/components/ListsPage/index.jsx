@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/lib/Button';
+import { Link } from 'react-router-dom';
 import './style.css';
 import convertDate from '../../utils/convertDate';
 import H2 from '../../components/H2';
@@ -52,14 +53,14 @@ function ListsPage(props) {
               {lists.map((list, i) =>
                 <tr key={list.id}>
                   <td>
-                    <div>
-                      <a
-                        className="lists-page-table__edit-button btn btn-primary"
-                        href="#edit"
-                      >
-                        Edit
-                      </a>
-                      {!isFetching &&
+                    {!isFetching &&
+                      <div>
+                        <Link
+                          to={`/lists/${list.id}`}
+                          className="lists-page-table__edit-button btn btn-primary"
+                        >
+                          Edit
+                        </Link>
                         <button
                           className="lists-page-table__edit-button
                             lists-page-table__edit-button--bold btn btn-danger"
@@ -67,8 +68,8 @@ function ListsPage(props) {
                         >
                           Delete
                         </button>
-                      }
-                    </div>
+                      </div>
+                    }
                   </td>
                   <td>{list.id}</td>
                   <td>{list.name}</td>

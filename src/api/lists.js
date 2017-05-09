@@ -17,3 +17,11 @@ export function APIdeleteList(listId) {
     method: 'DELETE',
   });
 }
+
+export function APIgetList(listId) {
+  return fetch(`${url}/list/${listId}`, {
+    headers: {
+      Accept: 'application/json',
+    },
+  });
+}
