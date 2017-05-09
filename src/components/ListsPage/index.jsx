@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/lib/Button';
-import './ListsIndex.css';
+import './style.css';
 import convertDate from '../../utils/convertDate';
 import H2 from '../../components/H2';
 
-function ListsIndex(props) {
+function ListsPage(props) {
   const { handleListDelete, isFetching, lastUpdated, handleFetchListsIfNeeded, lists } = props;
   return (
-    <div className="lists-index">
-      <div className="lists-index-header">
+    <div className="lists-page">
+      <div className="lists-page-header">
         <H2 title="Lists Page" />
         <div>
           {lastUpdated > 0 &&
@@ -19,7 +19,7 @@ function ListsIndex(props) {
             </span>
           }
         </div>
-        <div className="list-index-last-updated-button">
+        <div className="lists-page__last-updated-button">
           <Button
             bsStyle="primary"
             disabled={isFetching}
@@ -37,11 +37,11 @@ function ListsIndex(props) {
         }
       </div>
       {lists.length > 0 &&
-        <div className="lists-index-table" style={{ opacity: isFetching ? 0.5 : 1 }}>
+        <div className="lists-page-table" style={{ opacity: isFetching ? 0.5 : 1 }}>
           <table className="table table-striped">
             <tbody>
               <tr>
-                <th className="lists-index-table__th-buttons" />
+                <th className="lists-page-table__th-buttons" />
                 <th>ID</th>
                 <th>List Name</th>
                 <th>Order</th>
@@ -54,15 +54,15 @@ function ListsIndex(props) {
                   <td>
                     <div>
                       <a
-                        className="lists-index-table__edit-button btn btn-primary"
+                        className="lists-page-table__edit-button btn btn-primary"
                         href="#edit"
                       >
                         Edit
                       </a>
                       {!isFetching &&
                         <button
-                          className="lists-index-table__edit-button
-                            lists-index-table__edit-button_bold btn btn-danger"
+                          className="lists-page-table__edit-button
+                            lists-page-table__edit-button--bold btn btn-danger"
                           onClick={() => handleListDelete(i, list.id)}
                         >
                           Delete
@@ -86,7 +86,7 @@ function ListsIndex(props) {
   );
 }
 
-ListsIndex.propTypes = {
+ListsPage.propTypes = {
   lists: PropTypes.array.isRequired,
   handleListDelete: PropTypes.func.isRequired,
   isFetching: PropTypes.bool.isRequired,
@@ -94,4 +94,4 @@ ListsIndex.propTypes = {
   handleFetchListsIfNeeded: PropTypes.func.isRequired,
 };
 
-export default ListsIndex;
+export default ListsPage;

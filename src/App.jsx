@@ -6,10 +6,10 @@ import {
 import './App.css';
 import Header from './components/Header';
 import SideMenu from './components/SideMenu';
-import ListsContainer from './containers/ListsContainer';
-import Home from './components/Home';
-import About from './components/About';
-import Topics from './components/Topics';
+import ListsPageContainer from './containers/ListsPageContainer';
+import HomePage from './components/HomePage';
+import AboutPage from './components/AboutPage';
+import TopicsPage from './components/TopicsPage';
 
 function App() {
   return (
@@ -18,10 +18,10 @@ function App() {
         <Header />
         <SideMenu />
         <div className="app-main">
-          <Route exact path="/" component={Home} />
-          <Route path="/lists" component={ListsContainer} />
-          <Route path="/about" component={About} />
-          <Route path="/topics" component={Topics} />
+          <Route exact path="/" component={HomePage} />
+          <Route path="/lists" component={ListsPageContainer} />
+          <Route path="/about" component={AboutPage} />
+          <Route path="/topics" component={TopicsPage} />
         </div>
       </div>
     </Router>

@@ -3,7 +3,7 @@ import { Route, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Topic from './Topic';
 
-const Topics = ({ match }) => (
+const TopicsPage = ({ match }) => (
   <div>
     <h2>Topics</h2>
     <ul>
@@ -35,8 +35,8 @@ const Topics = ({ match }) => (
   </div>
 );
 
-Topics.propTypes = {
+TopicsPage.propTypes = {
   match: PropTypes.object.isRequired,
 };
 
-export default Topics;
+export default TopicsPage;

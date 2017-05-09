@@ -32,7 +32,7 @@ export const url = 'http://react_redux_api_rails5.j123.ru'
 5. Deployment to Production
 6. Nested attributes
 7. Data normalization
-7. Reselectors
+7. Selectors (Reselect)
 8. CSS Modules
 9. Components Library
 9. Authentication (JWT)

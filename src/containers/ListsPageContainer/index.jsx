@@ -2,21 +2,21 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchListsIfNeeded, deleteList } from '../../actions/listsIndex';
-import ListsIndex from '../../components/ListsIndex';
+import ListsPage from '../../components/ListsPage';
 
-class ListsContainer extends Component {
+class ListsPageContainer extends Component {
   componentDidMount() {
     // const { dispatch } = this.props;
     // dispatch(fetchListsIfNeeded());
   }
 
   render() {
-    // console.log('ListsContainer props', this.props);
-    // console.log('ListsContainer', this.props);
+    // console.log('ListsPageContainer props', this.props);
+    // console.log('ListsPageContainer', this.props);
     const { lists, isFetching, lastUpdated, dispatch } = this.props;
     return (
-      <div className="lists-container">
-        <ListsIndex
+      <div className="lists-page-container">
+        <ListsPage
           lists={lists}
           isFetching={isFetching}
           lastUpdated={lastUpdated}
@@ -28,30 +28,31 @@ class ListsContainer extends Component {
   }
 }
 
-ListsContainer.propTypes = {
+ListsPageContainer.propTypes = {
   lists: PropTypes.array.isRequired,
   isFetching: PropTypes.bool.isRequired,
   lastUpdated: PropTypes.number,
   dispatch: PropTypes.func.isRequired,
 };
 
-ListsContainer.defaultProps = {
+ListsPageContainer.defaultProps = {
   lists: [],
   isFetching: false,
   lastUpdated: 0,
 };
 
 function mapStateToProps(state) {
-  // console.log('ListsContainer mapStateToProps', state);
+  // console.log('ListsPageContainer mapStateToProps', state);
+  // TODO listsIndex rename
   const { listsIndex } = state;
-  // console.log('ListsContainer mapStateToProps listsIndex', listsIndex);
+  // console.log('ListsPageContainer mapStateToProps listsPage', listsPage);
   const {
     lists,
     isFetching,
     lastUpdated,
   } = listsIndex;
 
-  // console.log('ListsContainer mapStateToProps lists', lists);
+  // console.log('ListsPageContainer mapStateToProps lists', lists);
 
   return {
     lists,
@@ -60,4 +61,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(ListsContainer);
+export default connect(mapStateToProps)(ListsPageContainer);
