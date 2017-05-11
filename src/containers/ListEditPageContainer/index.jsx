@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ListEditPage from '../../components/ListEditPage';
-import { fetchList } from './actions';
+import { fetchList, changeListField } from './actions';
 
 class ListEditPageContainer extends Component {
   componentDidMount() {
@@ -12,12 +12,13 @@ class ListEditPageContainer extends Component {
 
   render() {
     // console.log('ListEditPageContainer props', this.props);
-    const { list, isFetching } = this.props;
+    const { list, isFetching, dispatch } = this.props;
     return (
       <div className="list-edit-page-container">
         <ListEditPage
           list={list}
           isFetching={isFetching}
+          handleChangeField={fieldObject => dispatch(changeListField(fieldObject))}
         />
       </div>
     );
