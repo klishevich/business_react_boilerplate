@@ -5,6 +5,7 @@ export const RECEIVE_LISTS = 'RECEIVE_LISTS';
 export const INVALIDATE_LISTS = 'INVALIDATE_LISTS';
 export const REQUEST_DELETE_LIST = 'REQUEST_DELETE_LIST';
 export const RECEIVE_DELETE_LIST = 'RECEIVE_DELETE_LIST';
+export const SET_EDIT_LIST_ID = 'SET_EDIT_LIST_ID';
 
 export function invalidateLists() {
   // console.log('actions invalidateLists');
@@ -92,5 +93,12 @@ export function deleteList(index, listId) {
     dispatch(requestDeleteList(index));
     return APIdeleteList(listId)
     .then(() => dispatch(receiveDeleteList()));
+  };
+}
+
+export function setEditListId(listId) {
+  return {
+    type: SET_EDIT_LIST_ID,
+    payload: { editListId: listId },
   };
 }

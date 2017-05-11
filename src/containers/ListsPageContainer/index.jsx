@@ -13,7 +13,7 @@ class ListsPageContainer extends Component {
   render() {
     // console.log('ListsPageContainer props', this.props);
     // console.log('ListsPageContainer', this.props);
-    const { lists, isFetching, lastUpdated, dispatch } = this.props;
+    const { lists, isFetching, lastUpdated, dispatch, editListId } = this.props;
     return (
       <div className="lists-page-container">
         <ListsPage
@@ -22,6 +22,7 @@ class ListsPageContainer extends Component {
           lastUpdated={lastUpdated}
           handleListDelete={(index, listId) => dispatch(deleteList(index, listId))}
           handleFetchListsIfNeeded={() => dispatch(fetchLists())}
+          editListId={editListId}
         />
       </div>
     );
@@ -33,12 +34,14 @@ ListsPageContainer.propTypes = {
   isFetching: PropTypes.bool.isRequired,
   lastUpdated: PropTypes.number,
   dispatch: PropTypes.func.isRequired,
+  editListId: PropTypes.number,
 };
 
 ListsPageContainer.defaultProps = {
   lists: [],
   isFetching: false,
   lastUpdated: 0,
+  editListId: 0,
 };
 
 function mapStateToProps(state) {
@@ -49,6 +52,7 @@ function mapStateToProps(state) {
     lists,
     isFetching,
     lastUpdated,
+    editListId,
   } = listsPage;
 
   // console.log('ListsPageContainer mapStateToProps lists', lists);
@@ -57,6 +61,7 @@ function mapStateToProps(state) {
     lists,
     isFetching,
     lastUpdated,
+    editListId,
   };
 }
 

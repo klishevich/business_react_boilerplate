@@ -6,7 +6,8 @@ import convertDate from '../../utils/convertDate';
 import H2 from '../../components/H2';
 
 function ListsPage(props) {
-  const { handleListDelete, isFetching, lastUpdated, handleFetchListsIfNeeded, lists } = props;
+  const { handleListDelete, isFetching, lastUpdated,
+    handleFetchListsIfNeeded, lists, editListId } = props;
   return (
     <div className="lists-page">
       <div className="lists-page-header">
@@ -25,7 +26,7 @@ function ListsPage(props) {
             disabled={isFetching}
             onClick={() => handleFetchListsIfNeeded()}
           >
-            Refrash
+            Refresh
           </button>
         </div>
         {isFetching && lists.length === 0 &&
@@ -49,7 +50,7 @@ function ListsPage(props) {
                 <th>Date of birth</th>
               </tr>
               {lists.map((list, i) =>
-                <tr key={list.id}>
+                <tr key={list.id} className={list.id === editListId ? 'info' : 'no'}>
                   <td>
                     {!isFetching &&
                       <div>
@@ -69,7 +70,12 @@ function ListsPage(props) {
                       </div>
                     }
                   </td>
-                  <td>{list.id}</td>
+                  <td>
+                    {list.id}
+                    {list.id === editListId &&
+                      <span>&nbsp;(draft)</span>
+                    }
+                  </td>
                   <td>{list.name}</td>
                   <td>{list.order}</td>
                   <td>{list.first_name}</td>
@@ -91,6 +97,7 @@ ListsPage.propTypes = {
   isFetching: PropTypes.bool.isRequired,
   lastUpdated: PropTypes.number.isRequired,
   handleFetchListsIfNeeded: PropTypes.func.isRequired,
+  editListId: PropTypes.number.isRequired,
 };
 
 export default ListsPage;

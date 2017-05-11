@@ -4,6 +4,7 @@ import {
   RECEIVE_LISTS,
   REQUEST_DELETE_LIST,
   RECEIVE_DELETE_LIST,
+  SET_EDIT_LIST_ID,
 } from './actions';
 
 function listsPageReducer(state = { }, action) {
@@ -12,6 +13,7 @@ function listsPageReducer(state = { }, action) {
     case REQUEST_LISTS:
     case RECEIVE_LISTS:
     case REQUEST_DELETE_LIST:
+    case SET_EDIT_LIST_ID:
       // ... - spread operator, returns new object created from state
       // with action.payload values assigned to it
       return { ...state, ...action.payload };

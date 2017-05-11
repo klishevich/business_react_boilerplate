@@ -2,23 +2,25 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ListEditPage from '../../components/ListEditPage';
-import { fetchList, changeListField } from './actions';
+import { fetchListIfNeeded, changeListFieldAsync, fetchList } from './actions';
 
 class ListEditPageContainer extends Component {
   componentDidMount() {
     const { dispatch, match } = this.props;
-    dispatch(fetchList(match.params.listId));
+    dispatch(fetchListIfNeeded(match.params.listId));
   }
 
   render() {
     // console.log('ListEditPageContainer props', this.props);
-    const { list, isFetching, dispatch } = this.props;
+    const { list, isFetching, dispatch, isEdit, match } = this.props;
     return (
       <div className="list-edit-page-container">
         <ListEditPage
           list={list}
           isFetching={isFetching}
-          handleChangeField={fieldObject => dispatch(changeListField(fieldObject))}
+          handleChangeField={fieldObject => dispatch(changeListFieldAsync(fieldObject))}
+          isEdit={isEdit}
+          handleDiscard={() => dispatch(fetchList(match.params.listId))}
         />
       </div>
     );
@@ -30,11 +32,13 @@ ListEditPageContainer.propTypes = {
   match: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired,
   isFetching: PropTypes.bool,
+  isEdit: PropTypes.bool,
 };
 
 ListEditPageContainer.defaultProps = {
   list: {},
   isFetching: false,
+  isEdit: false,
 };
 
 function mapStateToProps(state) {
@@ -42,11 +46,13 @@ function mapStateToProps(state) {
   const {
     list,
     isFetching,
+    isEdit,
   } = listEditPage;
 
   return {
     list,
     isFetching,
+    isEdit,
   };
 }
 

@@ -21,7 +21,7 @@ class ListEditPage extends Component {
   }
 
   render() {
-    const { isFetching, list } = this.props;
+    const { isFetching, list, isEdit, handleDiscard } = this.props;
     return (
       <div className="list-edit-page">
         <h2>List Edit Page</h2>
@@ -31,6 +31,11 @@ class ListEditPage extends Component {
         {!isFetching &&
           <div className="row">
             <div className="col-md-6">
+              {isEdit &&
+                <div className="alert alert-info" role="alert">
+                  <strong>Draft:</strong> Record not save to database.
+                </div>
+              }
               <form>
                 <div className="form-group">
                   <label htmlFor="list-id">ID</label>
@@ -123,7 +128,20 @@ class ListEditPage extends Component {
                     onChange={this.handleChange}
                   />
                 </div>
-                <button type="submit" className="btn btn-primary btn-lg">Save Changes</button>
+                <button
+                  type="button"
+                  className="btn btn-primary btn-lg list-edit-page__save-button"
+                >
+                  Save
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-warning btn-lg"
+                  disabled={!isEdit}
+                  onClick={() => handleDiscard()}
+                >
+                  Discard
+                </button>
               </form>
             </div>
           </div>
@@ -138,6 +156,8 @@ ListEditPage.propTypes = {
   list: PropTypes.object.isRequired,
   isFetching: PropTypes.bool.isRequired,
   handleChangeField: PropTypes.func.isRequired,
+  isEdit: PropTypes.bool.isRequired,
+  handleDiscard: PropTypes.func.isRequired,
 };
 
 export default ListEditPage;
