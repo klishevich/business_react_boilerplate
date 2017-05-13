@@ -8,23 +8,26 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### How to try
 
-1. `git clone git@github.com:klishevich/business_react_boilerplate.git`
+1. Clone the project `git clone git@github.com:klishevich/business_react_boilerplate.git`
 2. Edit file `/src/constants.js` and set `export const url = 'http://react_redux_api_rails5.j123.ru'`
-3. `yarn`
-4. `yarn start`
+3. Install node modules with command `yarn`
+4. Start development server `yarn start`
 
-*If your want to use local server*
+**If your want to use local server**
 
 Clone Ruby on Rails project - https://github.com/klishevich/react_redux_api_rails5
 
 ### How to contribute
 
 1. Make Fork
+1. Choose task from Roadmap
 2. Develop and have fun
 3. Commit and push to Github
 4. Make Pull Request
+5. I make code review and give feedback
+6. I merge feature to master. You are cool, thanks for your contribution to opensource!
 
-### Tasks to do
+### Project Roadmap
 
 1. ~~create-react-app~~
 1. ~~Redux~~
@@ -38,26 +41,24 @@ Clone Ruby on Rails project - https://github.com/klishevich/react_redux_api_rail
 3. Tests
 4. Validations for saving form
 5. Dictionaries
-5. Server-side rendering 
 5. Deployment to Production
 6. Nested attributes
 7. Data normalization
 7. Selectors (Reselect)
 8. CSS Modules
-9. Components Library
 9. Authentication (JWT)
 9. Authorization
 
-*Maybe*
+**Maybe**
 
+1. Server-side rendering 
 1. React Router Redux
+1. Components Library
 
+### I have cloned the project, what else to do?
 
-### Task to train youself
-
-Make the same functionality (display index, create, update, delete) for model Singer.
+Make the same functionality as for model List (display index, create, update, delete) for model Singer.
 Available at the endpoint `http://react_redux_api_rails5.j123.ru/singers`
-
 
 ```ruby
 create_table "singers", force: :cascade do |t|
