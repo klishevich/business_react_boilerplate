@@ -20,9 +20,24 @@ const store = createStore(
 
 const rootEl = document.getElementById('root');
 
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  rootEl,
-);
+function render(Component) {
+  ReactDOM.render(
+    (
+      <Provider store={store}>
+        <Component />
+      </Provider>
+    ),
+    rootEl,
+  );
+}
+
+render(App);
+
+if (module.hot) {
+  module.hot.accept('./App', () => {
+    /* eslint-disable global-require */
+    const NextApp = require('./App').default;
+    /* eslint-enable global-require */
+    render(NextApp);
+  });
+}

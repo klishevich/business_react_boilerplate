@@ -38,7 +38,7 @@ Clone Ruby on Rails project - https://github.com/klishevich/react_redux_api_rail
 2. ~~Edit item page~~
 3. Flash Messages in separate container
 3. Create item page
-3. Hot Reload
+3. ~~Hot Reload~~
 3. Tests
 4. Validations for saving form
 5. Dictionaries
