@@ -7,7 +7,13 @@ import {
   SET_EDIT_LIST_ID,
 } from './actions';
 
-function listsPageReducer(state = { }, action) {
+const initialState = {
+  isFetching: false,
+  lists: [],
+  didInvalidate: true,
+};
+
+function listsPageReducer(state = initialState, action) {
   switch (action.type) {
     case INVALIDATE_LISTS:
     case REQUEST_LISTS:

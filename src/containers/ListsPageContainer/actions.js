@@ -38,21 +38,22 @@ function requestLists() {
   };
 }
 
-function receiveLists(lists) {
+function receiveLists(lists, isTest = false) {
   // console.log('actions receiveLists', lists);
+  const lastUpdated = isTest ? '1900-01-01' : Date.now();
   return {
     type: RECEIVE_LISTS,
-    payload: { lists, lastUpdated: Date.now(), isFetching: false, didInvalidate: false },
+    payload: { lists, lastUpdated, isFetching: false, didInvalidate: false },
   };
 }
 
-export function fetchLists() {
+export function fetchLists(isTest = false) {
   // console.log('actions fetchLists');
   return (dispatch) => {
     dispatch(requestLists());
     return APIgetLists()
     .then(response => response.json())
-    .then(json => dispatch(receiveLists(json)));
+    .then(json => dispatch(receiveLists(json, isTest)));
     // catch
   };
 }

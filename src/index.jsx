@@ -7,7 +7,7 @@ import { createLogger } from 'redux-logger';
 import App from './App';
 import rootReducer from './reducers';
 
-const initialState = { listsPage: { isFetching: false, lists: [], didInvalidate: true } };
+const initialState = { };
 const loggerMiddleware = createLogger();
 const store = createStore(
   rootReducer,

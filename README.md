@@ -12,6 +12,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 2. Edit file `/src/constants.js` and set `export const url = 'http://react_redux_api_rails5.j123.ru'`
 3. Install node modules with command `yarn`
 4. Start development server `yarn start`
+5. Run tests `npm test -- --coverage`
 
 **If your want to use local server**
 
