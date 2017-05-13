@@ -82,7 +82,7 @@ function receiveDeleteList() {
   // console.log('actions receiveDeleteList');
   return {
     type: RECEIVE_DELETE_LIST,
-    payload: { deleting_list_index: null },
+    payload: { deletingListIndex: null },
   };
 }
 

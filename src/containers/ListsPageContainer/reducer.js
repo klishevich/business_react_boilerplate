@@ -20,8 +20,8 @@ function listsPageReducer(state = { }, action) {
     case RECEIVE_DELETE_LIST:
       // console.log('RECEIVE_DELETE_LIST state', state);
       return { ...state,
-        lists: [...state.lists.slice(0, action.payload.deleting_list_index),
-          ...state.lists.slice(action.payload.deleting_list_index + 1)],
+        lists: [...state.lists.slice(0, state.deletingListIndex),
+          ...state.lists.slice(state.deletingListIndex + 1)],
         ...action.payload };
     default:
       return state;
