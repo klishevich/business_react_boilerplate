@@ -33,11 +33,11 @@ Clone Ruby on Rails project - https://github.com/klishevich/react_redux_api_rail
 1. ~~Redux~~
 1. ~~ESLint~~
 1. ~~Get list of items page~~
-1. ~~Delete item button~~
+1. ~~Delete item~~
 1. ~~Add React Router~~
-2. ~~Edit page~~
-3. Flash Messages
-3. Create page
+2. ~~Edit item page~~
+3. Flash Messages in separate container
+3. Create item page
 3. Hot Reload
 3. Tests
 4. Validations for saving form

@@ -100,7 +100,7 @@ export function patchList() {
 }
 
 export function clearFlashMessage() {
-  console.log('clearFlashMessage');
+  // console.log('clearFlashMessage');
   return {
     type: CLEAR_FLASH_MESSAGE,
     payload: { flashMessage: '' },

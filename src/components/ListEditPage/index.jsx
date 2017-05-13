@@ -21,7 +21,7 @@ class ListEditPage extends Component {
   }
 
   render() {
-    console.log('ListEditPage', this.props);
+    // console.log('ListEditPage', this.props);
     const { isFetching, list, isEdit, handleDiscard,
       handleSave, flashMessage, handleClearFlashMessage } = this.props;
     return (
