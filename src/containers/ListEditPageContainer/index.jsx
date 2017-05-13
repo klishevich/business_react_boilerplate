@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ListEditPage from '../../components/ListEditPage';
-import { fetchListIfNeeded, changeListFieldAsync, fetchList } from './actions';
+import { fetchListIfNeeded, changeListFieldAsync, fetchList, patchList, clearFlashMessage } from './actions';
 
 class ListEditPageContainer extends Component {
   componentDidMount() {
@@ -12,7 +12,7 @@ class ListEditPageContainer extends Component {
 
   render() {
     // console.log('ListEditPageContainer props', this.props);
-    const { list, isFetching, dispatch, isEdit, match } = this.props;
+    const { list, isFetching, dispatch, isEdit, match, flashMessage } = this.props;
     return (
       <div className="list-edit-page-container">
         <ListEditPage
@@ -20,7 +20,10 @@ class ListEditPageContainer extends Component {
           isFetching={isFetching}
           handleChangeField={fieldObject => dispatch(changeListFieldAsync(fieldObject))}
           isEdit={isEdit}
+          handleSave={() => dispatch(patchList())}
           handleDiscard={() => dispatch(fetchList(match.params.listId))}
+          flashMessage={flashMessage}
+          handleClearFlashMessage={() => dispatch(clearFlashMessage())}
         />
       </div>
     );
@@ -33,27 +36,19 @@ ListEditPageContainer.propTypes = {
   dispatch: PropTypes.func.isRequired,
   isFetching: PropTypes.bool,
   isEdit: PropTypes.bool,
+  flashMessage: PropTypes.string,
 };
 
 ListEditPageContainer.defaultProps = {
   list: {},
   isFetching: false,
   isEdit: false,
+  flashMessage: '',
 };
 
 function mapStateToProps(state) {
   const { listEditPage } = state;
-  const {
-    list,
-    isFetching,
-    isEdit,
-  } = listEditPage;
-
-  return {
-    list,
-    isFetching,
-    isEdit,
-  };
+  return { ...listEditPage };
 }
 
 export default connect(mapStateToProps)(ListEditPageContainer);

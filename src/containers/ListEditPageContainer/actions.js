@@ -1,14 +1,17 @@
-import { APIgetList } from '../../api/lists';
-import { setEditListId } from '../ListsPageContainer/actions';
+import { APIgetList, APIpatchList } from '../../api/lists';
+import { setEditListId, invalidateLists } from '../ListsPageContainer/actions';
 
 export const REQUEST_LIST = 'REQUEST_LIST';
 export const RECEIVE_LIST = 'RECEIVE_LIST';
 export const CHANGE_LIST_FIELD = 'CHANGE_LIST_FIELD';
+export const REQUEST_PATCH_LIST = 'REQUEST_PATCH_LIST';
+export const RECEIVE_PATCH_LIST = 'RECEIVE_PATCH_LIST';
+export const CLEAR_FLASH_MESSAGE = 'CLEAR_FLASH_MESSAGE';
 
 function requestList() {
   return {
     type: REQUEST_LIST,
-    payload: { isFetching: true },
+    payload: { isFetching: true, flashMessage: '' },
   };
 }
 
@@ -53,7 +56,7 @@ export function fetchListIfNeeded(listId) {
 function changeListField(fieldObject) {
   return {
     type: CHANGE_LIST_FIELD,
-    payload: { list: fieldObject, isEdit: true },
+    payload: { list: fieldObject, isEdit: true, flashMessage: '' },
   };
 }
 
@@ -66,5 +69,40 @@ export function changeListFieldAsync(fieldObject) {
       dispatch(setEditListId(listId));
     }
     dispatch(changeListField(fieldObject));
+  };
+}
+
+function requestPatchList() {
+  return {
+    type: REQUEST_PATCH_LIST,
+    payload: { isFetching: true, flashMessage: '' },
+  };
+}
+
+function receivePatchList(list) {
+  return {
+    type: RECEIVE_PATCH_LIST,
+    payload: { list, isFetching: false, isEdit: false, flashMessage: 'Saved Successfuly' },
+  };
+}
+
+export function patchList() {
+  return (dispatch, getState) => {
+    dispatch(requestPatchList());
+    const state = getState();
+    const listId = state.listEditPage.list.id;
+    const list = state.listEditPage.list;
+    return APIpatchList(listId, list)
+    .then(resultList => dispatch(receivePatchList(resultList)))
+    .then(() => dispatch(setEditListId(0)))
+    .then(() => dispatch(invalidateLists()));
+  };
+}
+
+export function clearFlashMessage() {
+  console.log('clearFlashMessage');
+  return {
+    type: CLEAR_FLASH_MESSAGE,
+    payload: { flashMessage: '' },
   };
 }

@@ -4,6 +4,19 @@
 import fetch from 'isomorphic-fetch';
 import { url } from '../constants';
 
+function checkStatus(response) {
+  if (response.status >= 200 && response.status < 300) {
+    return response;
+  }
+  const error = new Error(response.statusText);
+  error.response = response;
+  throw error;
+}
+
+function parseJSON(response) {
+  return response.json();
+}
+
 export function APIgetLists() {
   return fetch(`${url}/lists`, {
     headers: {
@@ -24,4 +37,19 @@ export function APIgetList(listId) {
       Accept: 'application/json',
     },
   });
+}
+
+export function APIpatchList(listId, list) {
+  return fetch(`${url}/lists/${listId}`, {
+    method: 'PATCH',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      list,
+    }),
+  })
+  .then(checkStatus)
+  .then(parseJSON);
 }

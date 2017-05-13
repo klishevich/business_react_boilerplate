@@ -21,7 +21,9 @@ class ListEditPage extends Component {
   }
 
   render() {
-    const { isFetching, list, isEdit, handleDiscard } = this.props;
+    console.log('ListEditPage', this.props);
+    const { isFetching, list, isEdit, handleDiscard,
+      handleSave, flashMessage, handleClearFlashMessage } = this.props;
     return (
       <div className="list-edit-page">
         <h2>List Edit Page</h2>
@@ -29,119 +31,142 @@ class ListEditPage extends Component {
           <h3>Loading...</h3>
         }
         {!isFetching &&
-          <div className="row">
-            <div className="col-md-6">
-              {isEdit &&
-                <div className="alert alert-info" role="alert">
-                  <strong>Draft:</strong> Record not save to database.
-                </div>
-              }
+          <div>
+            <div className="row">
+              <div className="col-md-12">
+                {flashMessage !== '' &&
+                  <div className="alert alert-success" role="alert">
+                    <button
+                      type="button"
+                      className="close"
+                      data-dismiss="alert"
+                      aria-label="Close"
+                      onClick={() => handleClearFlashMessage()}
+                    >
+                      <span aria-hidden="true">×</span>
+                    </button>{flashMessage}
+                  </div>
+                }
+                {isEdit &&
+                  <div className="alert alert-info" role="alert">
+                    <strong>Draft:</strong> Save to database or Discard
+                  </div>
+                }
+              </div>
+            </div>
+            <div className="row">
               <form>
-                <div className="form-group">
-                  <label htmlFor="list-id">ID</label>
-                  <input
-                    className="form-control"
-                    id="list-id"
-                    value={list.id}
-                    disabled
-                    readOnly
-                  />
+                <div className="col-md-6">
+                  <div className="form-group">
+                    <label htmlFor="list-id">ID</label>
+                    <input
+                      className="form-control"
+                      id="list-id"
+                      value={list.id}
+                      disabled
+                      readOnly
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="list-name">List</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="list-name"
+                      placeholder="List Name"
+                      name="name"
+                      value={list.name}
+                      onChange={this.handleChange}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="list-last-name">Last Name</label>
+                    <input
+                      className="form-control"
+                      id="list-last-name"
+                      name="last_name"
+                      value={list.last_name}
+                      onChange={this.handleChange}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="list-first-name">First Name</label>
+                    <input
+                      className="form-control"
+                      id="list-first-name"
+                      name="first_name"
+                      value={list.first_name}
+                      onChange={this.handleChange}
+                    />
+                  </div>
+                  <button
+                    type="button"
+                    className="btn btn-primary btn-lg list-edit-page__save-button"
+                    disabled={!isEdit}
+                    onClick={() => handleSave()}
+                  >
+                    Save
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-warning btn-lg"
+                    disabled={!isEdit}
+                    onClick={() => handleDiscard()}
+                  >
+                    Discard
+                  </button>
                 </div>
-                <div className="form-group">
-                  <label htmlFor="list-created-at">Created at</label>
-                  <input
-                    type="date"
-                    className="form-control"
-                    id="list-created-at"
-                    name="created_at"
-                    disabled
-                    value={cutDate(list.created_at)}
-                    readOnly
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="list-name">List</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="list-name"
-                    placeholder="List Name"
-                    name="name"
-                    value={list.name}
-                    onChange={this.handleChange}
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="list-first-name">First Name</label>
-                  <input
-                    className="form-control"
-                    id="list-first-name"
-                    name="first_name"
-                    value={list.first_name}
-                    onChange={this.handleChange}
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="list-last-name">Last Name</label>
-                  <input
-                    className="form-control"
-                    id="list-last-name"
-                    name="last_name"
-                    value={list.last_name}
-                    onChange={this.handleChange}
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="list-birth-date">Bitrh Date</label>
-                  <input
-                    type="date"
-                    className="form-control"
-                    id="list-birth-date"
-                    name="birth_date"
-                    value={list.birth_date}
-                    onChange={this.handleChange}
-                  />
-                </div>
-                <div className="form-group">
-                  <div className="checkbox">
-                    <label htmlFor="list-is-alive">
-                      <input
-                        type="checkbox"
-                        name="is_alive"
-                        checked={list.is_alive}
-                        id="list-is-alive"
-                        readOnly
-                        onClick={this.handleCheckboxChange}
-                      />
-                      Is Alive
-                    </label>
+                <div className="col-md-6">
+                  <div className="form-group">
+                    <label htmlFor="list-created-at">Created at</label>
+                    <input
+                      type="date"
+                      className="form-control"
+                      id="list-created-at"
+                      name="created_at"
+                      disabled
+                      value={cutDate(list.created_at)}
+                      readOnly
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="list-order">Order</label>
+                    <input
+                      type="number"
+                      className="form-control"
+                      id="list-order"
+                      name="order"
+                      value={list.order}
+                      onChange={this.handleChange}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="list-birth-date">Bitrh Date</label>
+                    <input
+                      type="date"
+                      className="form-control"
+                      id="list-birth-date"
+                      name="birth_date"
+                      value={list.birth_date}
+                      onChange={this.handleChange}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <div className="checkbox">
+                      <label htmlFor="list-is-alive">
+                        <input
+                          type="checkbox"
+                          name="is_alive"
+                          checked={list.is_alive}
+                          id="list-is-alive"
+                          readOnly
+                          onClick={this.handleCheckboxChange}
+                        />
+                        Is Alive
+                      </label>
+                    </div>
                   </div>
                 </div>
-                <div className="form-group">
-                  <label htmlFor="list-order">Order</label>
-                  <input
-                    type="number"
-                    className="form-control"
-                    id="list-order"
-                    name="order"
-                    value={list.order}
-                    onChange={this.handleChange}
-                  />
-                </div>
-                <button
-                  type="button"
-                  className="btn btn-primary btn-lg list-edit-page__save-button"
-                >
-                  Save
-                </button>
-                <button
-                  type="button"
-                  className="btn btn-warning btn-lg"
-                  disabled={!isEdit}
-                  onClick={() => handleDiscard()}
-                >
-                  Discard
-                </button>
               </form>
             </div>
           </div>
@@ -158,6 +183,9 @@ ListEditPage.propTypes = {
   handleChangeField: PropTypes.func.isRequired,
   isEdit: PropTypes.bool.isRequired,
   handleDiscard: PropTypes.func.isRequired,
+  handleSave: PropTypes.func.isRequired,
+  flashMessage: PropTypes.string.isRequired,
+  handleClearFlashMessage: PropTypes.func.isRequired,
 };
 
 export default ListEditPage;

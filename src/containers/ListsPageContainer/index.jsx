@@ -45,24 +45,8 @@ ListsPageContainer.defaultProps = {
 };
 
 function mapStateToProps(state) {
-  // console.log('ListsPageContainer mapStateToProps', state);
   const { listsPage } = state;
-  // console.log('ListsPageContainer mapStateToProps listsPage', listsPage);
-  const {
-    lists,
-    isFetching,
-    lastUpdated,
-    editListId,
-  } = listsPage;
-
-  // console.log('ListsPageContainer mapStateToProps lists', lists);
-
-  return {
-    lists,
-    isFetching,
-    lastUpdated,
-    editListId,
-  };
+  return { ...listsPage };
 }
 
 export default connect(mapStateToProps)(ListsPageContainer);
