@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ListEditPage from '../../components/ListEditPage';
-import { fetchListIfNeeded, changeListFieldAsync, fetchList, patchList, clearFlashMessage } from './actions';
+import { fetchListIfNeeded, changeListField, fetchList, patchList, clearFlashMessage } from './actions';
 
 class ListEditPageContainer extends Component {
   componentDidMount() {
@@ -18,7 +18,7 @@ class ListEditPageContainer extends Component {
         <ListEditPage
           list={list}
           isFetching={isFetching}
-          handleChangeField={fieldObject => dispatch(changeListFieldAsync(fieldObject))}
+          handleChangeField={fieldObject => dispatch(changeListField(fieldObject))}
           isEdit={isEdit}
           handleSave={() => dispatch(patchList())}
           handleDiscard={() => dispatch(fetchList(match.params.listId))}
