@@ -1,16 +1,28 @@
 ## Business React Redux Boilerplate Project
 
 This is demo project for creating Business Applications using React, Redux.
+
+![Business React Redux Boilerplate Project](doc/images/business_react_boilerplate.png)
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
-### How to work without local server
+### How to try
 
-Edit file `/src/constants.js` and set 
+1. `git clone git@github.com:klishevich/business_react_boilerplate.git`
+2. Edit file `/src/constants.js` and set `export const url = 'http://react_redux_api_rails5.j123.ru'`
+3. `yarn`
+4. `yarn start`
 
-```javascript
-export const url = 'http://react_redux_api_rails5.j123.ru'
+*If your want to use local server*
 
-```
+Clone Ruby on Rails project - https://github.com/klishevich/react_redux_api_rails5
+
+### How to contribute
+
+1. Make Fork
+2. Develop and have fun
+3. Commit and push to Github
+4. Make Pull Request
 
 ### Tasks to do
 
@@ -20,8 +32,8 @@ export const url = 'http://react_redux_api_rails5.j123.ru'
 1. ~~Get list of items page~~
 1. ~~Delete item button~~
 1. ~~Add React Router~~
-2. ? React Router Redux
-2. Create and Edit page
+2. Edit page
+3. Create page
 3. Hot Reload
 3. Tests
 4. Validations for saving form
@@ -35,6 +47,10 @@ export const url = 'http://react_redux_api_rails5.j123.ru'
 9. Components Library
 9. Authentication (JWT)
 9. Authorization
+
+*Maybe*
+
+1. React Router Redux
 
 
 ### Task to train youself
