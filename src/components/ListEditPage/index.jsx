@@ -10,20 +10,27 @@ class ListEditPage extends Component {
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
   }
 
+  componentDidMount() {
+    const { match } = this.props;
+    this.props.handleFetchList(match.params.listId);
+  }
+
+  handleDiscard() {
+    const { match } = this.props;
+    this.props.handleDiscard(match.params.listId);
+  }
+
   handleChange(e) {
-    // console.log('handleChange', e.target);
-    this.props.handleChangeField({ [e.target.name]: e.target.value });
+    this.props.handleChangeField(e.target.name, e.target.value);
   }
 
   handleCheckboxChange(e) {
-    // console.log('handleCheckboxChange', e.target);
-    this.props.handleChangeField({ [e.target.name]: e.target.checked });
+    this.props.handleChangeField(e.target.name, e.target.checked);
   }
 
   render() {
-    // console.log('ListEditPage', this.props);
-    const { isFetching, list, isEdit, handleDiscard,
-      handleSave, flashMessage, handleClearFlashMessage } = this.props;
+    const { list, isFetching, isEdit, flashMessage,
+      handleSave, handleClearFlashMessage } = this.props;
     return (
       <div className="list-edit-page">
         <h2>List Edit Page</h2>
@@ -41,7 +48,7 @@ class ListEditPage extends Component {
                       className="close"
                       data-dismiss="alert"
                       aria-label="Close"
-                      onClick={() => handleClearFlashMessage()}
+                      onClick={handleClearFlashMessage}
                     >
                       <span aria-hidden="true">×</span>
                     </button>{flashMessage}
@@ -103,7 +110,7 @@ class ListEditPage extends Component {
                     type="button"
                     className="btn btn-primary btn-lg list-edit-page__save-button"
                     disabled={!isEdit}
-                    onClick={() => handleSave()}
+                    onClick={handleSave}
                   >
                     Save
                   </button>
@@ -111,7 +118,7 @@ class ListEditPage extends Component {
                     type="button"
                     className="btn btn-warning btn-lg"
                     disabled={!isEdit}
-                    onClick={() => handleDiscard()}
+                    onClick={() => this.handleDiscard()}
                   >
                     Discard
                   </button>
@@ -179,13 +186,22 @@ class ListEditPage extends Component {
 
 ListEditPage.propTypes = {
   list: PropTypes.object.isRequired,
-  isFetching: PropTypes.bool.isRequired,
+  match: PropTypes.object.isRequired,
+  isFetching: PropTypes.bool,
+  isEdit: PropTypes.bool,
+  flashMessage: PropTypes.string,
+  handleFetchList: PropTypes.func.isRequired,
   handleChangeField: PropTypes.func.isRequired,
-  isEdit: PropTypes.bool.isRequired,
-  handleDiscard: PropTypes.func.isRequired,
   handleSave: PropTypes.func.isRequired,
-  flashMessage: PropTypes.string.isRequired,
+  handleDiscard: PropTypes.func.isRequired,
   handleClearFlashMessage: PropTypes.func.isRequired,
+};
+
+ListEditPage.defaultProps = {
+  list: {},
+  isFetching: false,
+  isEdit: false,
+  flashMessage: '',
 };
 
 export default ListEditPage;

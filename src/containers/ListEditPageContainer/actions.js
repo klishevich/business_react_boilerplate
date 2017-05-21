@@ -53,14 +53,14 @@ export function fetchListIfNeeded(listId) {
   };
 }
 
-function changeListField2(fieldObject) {
+function changeListField2(fieldName, fieldValue) {
   return {
     type: CHANGE_LIST_FIELD,
-    payload: { list: fieldObject, isEdit: true, flashMessage: '' },
+    payload: { list: { [fieldName]: fieldValue }, isEdit: true, flashMessage: '' },
   };
 }
 
-export function changeListField(fieldObject) {
+export function changeListField(fieldName, fieldValue) {
   return (dispatch, getState) => {
     const state = getState();
     const listId = state.listEditPage.list.id;
@@ -68,7 +68,7 @@ export function changeListField(fieldObject) {
     if (currentEditListId !== listId) {
       dispatch(setEditListId(listId));
     }
-    dispatch(changeListField2(fieldObject));
+    dispatch(changeListField2(fieldName, fieldValue));
   };
 }
 
