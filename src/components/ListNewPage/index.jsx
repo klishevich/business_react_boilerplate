@@ -20,7 +20,7 @@ class ListNewPage extends Component {
   render() {
     const { list, isEdit, handleSave, flashMessage, handleClearFlashMessage } = this.props;
     return (
-      <div className="list-edit-page">
+      <div className="list-new-page">
         <h2>List Create Page</h2>
         <div>
           <div className="row">
@@ -77,7 +77,7 @@ class ListNewPage extends Component {
                 </div>
                 <button
                   type="button"
-                  className="btn btn-primary btn-lg list-edit-page__save-button"
+                  className="btn btn-primary btn-lg list-new-page__save-button"
                   disabled={!isEdit}
                   onClick={() => handleSave()}
                 >

@@ -1,12 +1,11 @@
 import { APIcreateList } from '../../api/lists';
 import { invalidateLists } from '../ListsPageContainer/actions';
 
-export const CHANGE_LIST_FIELD = 'CHANGE_LIST_FIELD';
+export const CHANGE_LIST_NEW_FIELD = 'CHANGE_LIST_NEW_FIELD';
 export const REQUEST_CREATE_LIST = 'REQUEST_CREATE_LIST';
 export const RECEIVE_CREATE_LIST = 'RECEIVE_CREATE_LIST';
-export const CLEAR_FLASH_MESSAGE = 'CLEAR_FLASH_MESSAGE';
-export const REQUEST_LIST = 'REQUEST_LIST';
-export const RECEIVE_LIST = 'RECEIVE_LIST';
+export const REQUEST_LIST_NEW = 'REQUEST_LIST_NEW';
+export const RECEIVE_LIST_NEW = 'RECEIVE_LIST_NEW';
 
 function requestCreateList() {
   return {
@@ -22,16 +21,10 @@ function receiveCreateList(list) {
   };
 }
 
-function changeListField2(fieldObject) {
-  return {
-    type: CHANGE_LIST_FIELD,
-    payload: { list: fieldObject, isEdit: true, flashMessage: '' },
-  };
-}
-
 export function changeListField(fieldObject) {
-  return (dispatch) => {
-    dispatch(changeListField2(fieldObject));
+  return {
+    type: CHANGE_LIST_NEW_FIELD,
+    payload: { list: fieldObject, isEdit: true, flashMessage: '' },
   };
 }
 
@@ -43,12 +36,5 @@ export function createList() {
     return APIcreateList(list)
     .then(resultList => dispatch(receiveCreateList(resultList)))
     .then(() => dispatch(invalidateLists()));
-  };
-}
-
-export function clearFlashMessage() {
-  return {
-    type: CLEAR_FLASH_MESSAGE,
-    payload: { flashMessage: '' },
   };
 }

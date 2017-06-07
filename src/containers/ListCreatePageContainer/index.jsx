@@ -1,30 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ListNewPage from '../../components/ListNewPage';
-import { changeListField, createList, clearFlashMessage } from './actions';
+import { changeListField, createList } from './actions';
+import { clearFlashMessage } from '../ListEditPageContainer/actions';
 
-class ListCreatePageContainer extends Component {
-  componentDidMount() {
-    //
-  }
-
-  render() {
-    const { list, isEdit, dispatch, flashMessage } = this.props;
-    return (
-      <div className="list-create-page-container">
-        <ListNewPage
-          list={list}
-          handleChangeField={fieldObject => dispatch(changeListField(fieldObject))}
-          isEdit={isEdit}
-          handleSave={() => dispatch(createList())}
-          flashMessage={flashMessage}
-          handleClearFlashMessage={() => dispatch(clearFlashMessage())}
-        />
-      </div>
-    );
-  }
-}
+const ListCreatePageContainer = (props) => {
+  const { list, isEdit, dispatch, flashMessage } = props;
+  return (
+    <div className="list-create-page-container">
+      <ListNewPage
+        list={list}
+        handleChangeField={fieldObject => dispatch(changeListField(fieldObject))}
+        isEdit={isEdit}
+        handleSave={() => dispatch(createList())}
+        flashMessage={flashMessage}
+        handleClearFlashMessage={() => dispatch(clearFlashMessage())}
+      />
+    </div>
+  );
+};
 
 ListCreatePageContainer.propTypes = {
   list: PropTypes.object.isRequired,
