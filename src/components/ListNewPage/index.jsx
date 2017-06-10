@@ -10,11 +10,11 @@ class ListNewPage extends Component {
   }
 
   handleChange(e) {
-    this.props.handleChangeField({ [e.target.name]: e.target.value });
+    this.props.handleChangeField(e.target.name, e.target.value);
   }
 
   handleCheckboxChange(e) {
-    this.props.handleChangeField({ [e.target.name]: e.target.checked });
+    this.props.handleChangeField(e.target.name, e.target.checked);
   }
 
   render() {
@@ -138,6 +138,12 @@ ListNewPage.propTypes = {
   handleSave: PropTypes.func.isRequired,
   flashMessage: PropTypes.string.isRequired,
   handleClearFlashMessage: PropTypes.func.isRequired,
+};
+
+ListNewPage.defaultProps = {
+  list: {},
+  isEdit: false,
+  flashMessage: '',
 };
 
 export default ListNewPage;

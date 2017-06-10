@@ -1,4 +1,4 @@
-import { APIcreateList } from '../../api/lists';
+import { APIpostList } from '../../api/lists';
 import { invalidateLists } from '../ListsPageContainer/actions';
 
 export const CHANGE_LIST_NEW_FIELD = 'CHANGE_LIST_NEW_FIELD';
@@ -21,10 +21,10 @@ function receiveCreateList(list) {
   };
 }
 
-export function changeListField(fieldObject) {
+export function changeListField(fieldName, fieldValue) {
   return {
     type: CHANGE_LIST_NEW_FIELD,
-    payload: { list: fieldObject, isEdit: true, flashMessage: '' },
+    payload: { list: { [fieldName]: fieldValue }, isEdit: true, flashMessage: '' },
   };
 }
 
@@ -33,7 +33,7 @@ export function createList() {
     dispatch(requestCreateList());
     const state = getState();
     const list = state.listCreatePage.list;
-    return APIcreateList(list)
+    return APIpostList(list)
     .then(resultList => dispatch(receiveCreateList(resultList)))
     .then(() => dispatch(invalidateLists()));
   };

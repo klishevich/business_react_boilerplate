@@ -39,7 +39,7 @@ export function APIgetList(listId) {
   });
 }
 
-export function APIcreateList(list) {
+export function APIpostList(list) {
   return fetch(`${url}/lists`, {
     method: 'POST',
     headers: {
