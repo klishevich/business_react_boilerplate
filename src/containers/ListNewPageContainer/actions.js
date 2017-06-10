@@ -32,7 +32,7 @@ export function createList() {
   return (dispatch, getState) => {
     dispatch(requestCreateList());
     const state = getState();
-    const list = state.listCreatePage.list;
+    const list = state.listNewPage.list;
     return APIpostList(list)
     .then(resultList => dispatch(receiveCreateList(resultList)))
     .then(() => dispatch(invalidateLists()));

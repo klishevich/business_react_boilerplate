@@ -12,8 +12,8 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
-  const { listCreatePage } = state;
-  return { ...listCreatePage };
+  const { listNewPage } = state;
+  return { ...listNewPage };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListNewPage);
