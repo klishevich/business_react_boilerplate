@@ -11,7 +11,7 @@ import HomePage from './components/HomePage';
 import AboutPage from './components/AboutPage';
 import TopicsPage from './components/TopicsPage';
 import ListEditPageContainer from './containers/ListEditPageContainer';
-import ListCreatePageContainer from './containers/ListCreatePageContainer';
+import ListNewPageContainer from './containers/ListNewPageContainer';
 
 function App() {
   return (
@@ -22,7 +22,7 @@ function App() {
         <div className="app-main">
           <Route exact path="/" component={HomePage} />
           <Route exact path="/lists" component={ListsPageContainer} />
-          <Route path="/lists_new" component={ListCreatePageContainer} />
+          <Route path="/lists_new" component={ListNewPageContainer} />
           <Route path="/lists/:listId" component={ListEditPageContainer} />
           <Route path="/about" component={AboutPage} />
           <Route path="/topics" component={TopicsPage} />

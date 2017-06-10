@@ -5,7 +5,7 @@ import {
   CHANGE_LIST_NEW_FIELD,
 } from './actions';
 
-function listCreatePageReducer(state = { }, action) {
+function listNewPageReducer(state = { }, action) {
   switch (action.type) {
     case REQUEST_CREATE_LIST:
     case RECEIVE_CREATE_LIST:
@@ -18,4 +18,4 @@ function listCreatePageReducer(state = { }, action) {
   }
 }
 
-export default listCreatePageReducer;
+export default listNewPageReducer;
