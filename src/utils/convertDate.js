@@ -13,19 +13,6 @@ export default function convertDate(stringDate) {
   return stringDate;
 }
 
-// export function convertDate2(stringDate) {
-//   if (typeof stringDate === 'string' || stringDate instanceof String) {
-//     if (stringDate.length >= 10) {
-//       const year = stringDate.substring(0, 4);
-//       const month = stringDate.substring(5, 7);
-//       const day = stringDate.substring(8, 10);
-//       const res = `${day}-${month}-${year}`;
-//       return res;
-//     }
-//   }
-//   return stringDate;
-// }
-
 export function cutDate(stringDate) {
   if (typeof stringDate === 'string' || stringDate instanceof String) {
     if (stringDate.length >= 10) {

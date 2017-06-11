@@ -6,6 +6,7 @@ export const REQUEST_CREATE_LIST = 'REQUEST_CREATE_LIST';
 export const RECEIVE_CREATE_LIST = 'RECEIVE_CREATE_LIST';
 export const REQUEST_LIST_NEW = 'REQUEST_LIST_NEW';
 export const RECEIVE_LIST_NEW = 'RECEIVE_LIST_NEW';
+export const CLEAR_LIST_NEW = 'CLEAR_LIST_NEW';
 
 function requestCreateList() {
   return {
@@ -28,6 +29,13 @@ export function changeListField(fieldName, fieldValue) {
   };
 }
 
+function clearListNew() {
+  return {
+    type: CLEAR_LIST_NEW,
+    payload: { flashMessage: 'Created Successfuly. And form cleared!' },
+  };
+}
+
 export function createList() {
   return (dispatch, getState) => {
     dispatch(requestCreateList());
@@ -35,6 +43,7 @@ export function createList() {
     const list = state.listNewPage.list;
     return APIpostList(list)
     .then(resultList => dispatch(receiveCreateList(resultList)))
+    .then(() => dispatch(clearListNew()))
     .then(() => dispatch(invalidateLists()));
   };
 }

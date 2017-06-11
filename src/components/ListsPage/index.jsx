@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import './style.css';
 import convertDate from '../../utils/convertDate';
 import H2 from '../../components/H2';
+import compare from '../../utils/compare';
 
 class ListsPage extends Component {
   componentDidMount() {
@@ -13,6 +14,7 @@ class ListsPage extends Component {
   render() {
     const { isFetching, lastUpdated, lists, editListId,
       handleFetchLists, handleListDelete } = this.props;
+    lists.sort(compare);
     return (
       <div className="lists-page">
         <div className="lists-page-header">

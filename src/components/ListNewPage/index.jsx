@@ -134,14 +134,13 @@ class ListNewPage extends Component {
 ListNewPage.propTypes = {
   list: PropTypes.object.isRequired,
   handleChangeField: PropTypes.func.isRequired,
-  isEdit: PropTypes.bool.isRequired,
+  isEdit: PropTypes.bool,
   handleSave: PropTypes.func.isRequired,
-  flashMessage: PropTypes.string.isRequired,
+  flashMessage: PropTypes.string,
   handleClearFlashMessage: PropTypes.func.isRequired,
 };
 
 ListNewPage.defaultProps = {
-  list: {},
   isEdit: false,
   flashMessage: '',
 };
