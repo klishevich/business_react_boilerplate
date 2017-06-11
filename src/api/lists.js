@@ -39,6 +39,21 @@ export function APIgetList(listId) {
   });
 }
 
+export function APIpostList(list) {
+  return fetch(`${url}/lists`, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      list,
+    }),
+  })
+  .then(checkStatus)
+  .then(parseJSON);
+}
+
 export function APIpatchList(listId, list) {
   return fetch(`${url}/lists/${listId}`, {
     method: 'PATCH',
