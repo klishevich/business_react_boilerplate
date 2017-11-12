@@ -1,0 +1,239 @@
+<div class="page text-center">
+<!-- Page Header-->
+<header class="page-head section-sm-top-50 section-md-top-90">
+<!-- RD Navbar-->
+<%= render 'layouts/navigation' %>
+</header>
+<!-- Page Content-->
+<main class="page-content">
+<!-- Swiper-->
+<div data-height="100vh" data-min-height="100vh" data-slide-effect="fade" class="swiper-container swiper-slider">
+<div class="swiper-wrapper">
+<div data-slide-bg="<%= asset_path 'swiper-1.jpg' %>" class="swiper-slide">
+<div class="swiper-slide-caption">
+<div class="shell">
+<div class="range">
+<div class="cell-md-9 cell-md-preffix-3 text-center text-md-left">
+<h1 class="text-uppercase"> кофе</h1>
+<h4 class="offset-top-30 text-italic">У нас очень хороший кофе, эспрессо, гляссе, американо, свежезаваренный кофе...</h4>
+<%= order_bonus_card_block "Смотреть меню", "#" %>
+<div class="position-point">
+<a href="#" data-waypoint-to="#content" class="material-icons-keyboard_backspace icon icon-sm"> далее</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div data-slide-bg="<%= asset_path 'swiper-2.jpg' %>" class="swiper-slide">
+<div class="swiper-slide-caption">
+<div class="shell">
+<div class="range">
+<div class="cell-md-9 cell-md-preffix-3 text-center text-md-left">
+<h1 class="text-uppercase">Напитки</h1>
+<h4 class="offset-top-30 text-italic">У нас есть различные напитки, вкусные хорошие, замечательные, всем очень нравится...</h4>
+<%= order_bonus_card_block "Смотреть меню", "#" %>
+<div class="position-point"><a href="#" data-waypoint-to="#content" class="material-icons-keyboard_backspace icon icon-sm"> далее</a></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div data-slide-bg="<%= asset_path 'swiper-3.jpg' %>" class="swiper-slide">
+<div class="swiper-slide-caption">
+<div class="shell">
+<div class="range">
+<div class="cell-md-9 cell-md-preffix-3 text-center text-md-left">
+<h1 class="text-uppercase">Еда</h1>
+<h4 class="offset-top-30 text-italic">Большой выбор сэндвичей, салатов, десертов на любой вкус, все самое свежее...</h4>
+<%= order_bonus_card_block "Смотреть меню", "#" %>
+<div class="position-point"><a href="#" data-waypoint-to="#content" class="material-icons-keyboard_backspace icon icon-sm"> далее</a></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Swiper Pagination-->
+<div class="swiper-pagination"></div>
+<!-- Swiper Navigation-->
+<div class="swiper-button-prev"></div>
+<div class="swiper-button-next"></div>
+</div>
+<section id="content" class="section-top-80 section-lg-top-115 position-r">
+<div class="shell">
+<div class="range">
+<div class="cell-md-6 cell-md-push-2 text-center text-md-left">
+<h2 class="text-uppercase" style="color: #262626;">Добро пожаловать!</h2>
+<p class="offset-top-30 inset-md-right-20">
+Тут мы напишим о том как у нас хорошо и замечательно. Тут мы напишим о том как у нас хорошо и замечательно. Тут мы напишим о том как у нас хорошо и замечательно. Тут мы напишим о том как у нас хорошо и замечательно. Тут мы напишим о том как у нас хорошо и замечательно. Тут мы напишим о том как у нас хорошо и замечательно. Тут мы напишим о том как у нас хорошо и замечательно. Тут мы напишим о том как у нас хорошо и замечательно. 
+</p><a href="#" class="offset-top-27 link link-md position-r">подробнее</a>
+</div>
+<div class="cell-md-3 cell-md-push-1 text-center text-md-left divider-right">
+<!-- CountTo-->
+<div data-from="0" data-to="3" data-speed="2000" class="counter"></div>
+<h5>три кафе</h5>
+<!-- CountTo-->
+<div data-from="0" data-to="120" data-speed="5000" class="counter offset-top-45"></div>
+<h5>позиций меню</h5>
+<!-- CountTo-->
+<div data-from="0" data-to="8468" data-speed="5000" class="counter offset-top-45"></div>
+<h5>клиентов в месяц</h5>
+</div>
+<div class="cell-md-3 cell-md-push-3 section-md-top-105">
+<div class="contact-info contact-info-left text-center text-md-left offset-top-50 offset-md-top-0">
+<p>Москва,<br class="hidden visible-lg-block visible-md-block">ул. Волочаевская, д.38, стр.1</p><span class="material-icons-local_phone icon icon-xs offset-top-30"></span>
+<div class="phone"><a href="callto:#">(800) 123 1234</a></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="section-top-80 section-lg-top-120 bg-images section-md-bottom-180">
+<div class="shell">
+<div class="range">
+<div class="cell-md-9 cell-md-preffix-3 text-center text-lg-left">
+<h3>меню</h3>
+</div>
+</div>
+<div class="range offset-top-37">
+<div class="cell-md-3"></div>
+<div class="cell-md-9 divider-bottom section-md-bottom-20">
+<!-- Owl Carousel-->
+<div data-items="1" data-mouse-drag="false" data-md-items="2" data-sm-items="2" data-lg-items="3" data-stage-padding="15" data-loop="true" data-margin="40" data-dots="true" class="owl-carousel owl-carousel-1">
+<div class="owl-item text-center text-sm-left">
+<div class="pricing">
+<h5>Эспрессо</h5>
+<h5>&#x20bd;169 - 60мл</h5>
+<p>подается с бокалом воды</p>
+</div>
+<div class="pricing">
+<h5>Гляссе</h5>
+<h5>&#x20bd;199 - 210мл</h5>
+<p>эспрессо с мороженым и ванильным сиропом</p>
+</div>
+<div class="pricing">
+<h5>Еще какой-то кофе</h5>
+<h5>&#x20bd;цена</h5>
+<p>описание кофе</p>
+</div>
+<div class="pricing">
+<h5>Еще какой-то кофе</h5>
+<h5>&#x20bd;цена</h5>
+<p>описание кофе</p>
+</div>
+</div>
+<div class="owl-item text-center text-sm-left">
+<div class="pricing">
+<h5>Какао домашнее</h5>
+<h5>&#x20bd;239 - 240мл</h5>
+<p>горячий шоколад, молоко</p>
+</div>
+<div class="pricing">
+<h5>Фирменный горячий шоколад</h5>
+<h5>&#x20bd;224 - 100гр</h5>
+<p>подается с бокалом воды</p>
+</div>
+<div class="pricing">
+<h5>Еще какой-то напиток</h5>
+<h5>&#x20bd;цена</h5>
+<p>описание напитка</p>
+</div>
+<div class="pricing">
+<h5>Еще какой-то кофе</h5>
+<h5>&#x20bd;цена</h5>
+<p>описание напитка</p>
+</div>
+</div>
+<div class="owl-item text-center text-sm-left">
+<div class="pricing">
+<h5 class="letter-spasing">Кукис с фундуком и белым шоколадом</h5>
+<h5>&#x20bd;99 - 50гр</h5>
+</div>
+<div class="pricing">
+<h5>Клубничный тирамису</h5>
+<h5>&#x20bd;199 - 150гр</h5>
+<p>Очень вкусный и полезный и хороший</p>
+</div>
+<div class="pricing">
+<h5>Еще какая-то еда</h5>
+<h5>&#x20bd;цена</h5>
+<p>описание еды</p>
+</div>
+<div class="pricing">
+<h5>Еще какая-то еда</h5>
+<h5>&#x20bd;цена</h5>
+<p>описание еды</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="section-top-50 offset-md-top--186 position-r">
+<div class="shell text-md-left text-center">
+<div data-items="1" data-stage-padding="0" data-mouse-drag="false" data-loop="false" data-margin="0" data-dots="true" class="owl-carousel">
+<div class="range">
+<div class="cell-lg-6 cell-lg-preffix-3 cell-md-6 cell-md-preffix-2"><img src="<%= asset_path 'coffee1.jpg' %>" alt="" class="img-responsive margin-center"></div>
+<div class="cell-lg-3 cell-md-4 section-lg-top-218 section-md-top-145 section-lg-top-180">
+<h4 class="text-italic letter-spasing-1">Кофе, Американо, Эспрессо</h4><a href="#" class="offset-top-10 offset-md-top-35 link link-md position-r">подробнее</a>
+</div>
+</div>
+<div class="range">
+<div class="cell-lg-6 cell-lg-preffix-3 cell-md-6 cell-md-preffix-2"><img src="<%= asset_path 'swiper-1-1.jpg' %>" alt="" class="img-responsive margin-center"></div>
+<div class="cell-lg-3 cell-md-4 section-lg-top-218 section-md-top-145 section-lg-top-180">
+<h4 class="text-italic letter-spasing-1">Выпечка, мороженное, йогурты</h4><a href="#" class="offset-top-10 offset-md-top-35 link link-md position-r">подробнее</a>
+</div>
+</div>
+<div class="range">
+<div class="cell-lg-6 cell-lg-preffix-3 cell-md-6 cell-md-preffix-2"><img src="<%= asset_path 'swiper-1-3.jpg' %>" alt="" class="img-responsive margin-center"></div>
+<div class="cell-lg-3 cell-md-4 section-lg-top-218 section-md-top-145 section-lg-top-180">
+<h4 class="text-italic letter-spasing-1">Сэндвичи, салаты, супы, закуски</h4><a href="#" class="offset-top-10 offset-md-top-35 link link-md position-r">подробнее</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Page Footer-->
+<%= render 'layouts/footer' %>
+<!-- RD Google Map-->
+</div>
+<!-- Global Mailform Output-->
+<div id="form-output-global" class="snackbars"></div>
+<!-- PhotoSwipe Gallery-->
+<div tabindex="-1" role="dialog" aria-hidden="true" class="pswp">
+<div class="pswp__bg"></div>
+<div class="pswp__scroll-wrap">
+<div class="pswp__container">
+<div class="pswp__item"></div>
+<div class="pswp__item"></div>
+<div class="pswp__item"></div>
+</div>
+<div class="pswp__ui pswp__ui--hidden">
+<div class="pswp__top-bar">
+<div class="pswp__counter"></div>
+<button title="Close (Esc)" class="pswp__button pswp__button--close"></button>
+<button title="Share" class="pswp__button pswp__button--share"></button>
+<button title="Toggle fullscreen" class="pswp__button pswp__button--fs"></button>
+<button title="Zoom in/out" class="pswp__button pswp__button--zoom"></button>
+<div class="pswp__preloader">
+<div class="pswp__preloader__icn">
+<div class="pswp__preloader__cut">
+<div class="pswp__preloader__donut"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+<div class="pswp__share-tooltip"></div>
+</div>
+<button title="Previous (arrow left)" class="pswp__button pswp__button--arrow--left"></button>
+<button title="Next (arrow right)" class="pswp__button pswp__button--arrow--right"></button>
+<div class="pswp__caption">
+<div class="pswp__caption__cent"></div>
+</div>
+</div>
+</div>
+</div>
